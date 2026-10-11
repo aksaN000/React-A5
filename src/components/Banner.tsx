@@ -1,28 +1,29 @@
-import bannerStack from "../assets/banner-stack.png";
+import bannerStack from '../assets/banner-stack.png'
+
 function Banner() {
   return (
-    <section>
-      <div>
-        <h1>
-          Build Your Ideal <span>Development Stack</span>
+    <section className="max-w-6xl mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12">
+      <div className="lg:flex-1 text-center lg:text-left">
+        <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-gray-900">
+          Build Your Ideal <br />
+          <span className="text-brand">Development Stack</span>
         </h1>
-        <p>
-          Explore frontend, backend, database, and tooling options, compare them
-          side by side, and put together the stack that fits your next project.
+        <p className="mt-6 text-gray-600 leading-relaxed max-w-xl">
+          Explore frontend, backend, database, and tooling options, compare them side by side, and put together the stack that fits your next project.
         </p>
-        <div>
-          <button>Explore Technologies</button>
-          <button>Learn More</button>
+        <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
+          <button className="bg-brand text-white text-sm font-medium px-5 py-2.5 rounded-md cursor-pointer hover:opacity-90">
+            Explore Technologies
+          </button>
+          <button className="border border-gray-200 text-gray-700 text-sm font-medium px-8 py-2.5 rounded-md cursor-pointer hover:bg-gray-50">
+            Learn More
+          </button>
         </div>
       </div>
-      <div>
-        <img
-          src={bannerStack}
-          alt="Stacked layers of development technologies"
-        />
+      <div className="lg:flex-1 flex justify-center">
+        <img src={bannerStack} alt="Stacked layers of development technologies" className="w-full max-w-sm lg:max-w-md" />
       </div>
     </section>
   );
 }
-
 export default Banner;
