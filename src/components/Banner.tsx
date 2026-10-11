@@ -1,4 +1,4 @@
-import bannerStack from '../assets/banner-stack.png'
+import bannerStack from "../assets/banner-stack.png";
 function Banner() {
   return (
     <section>
@@ -15,7 +15,12 @@ function Banner() {
           <button>Learn More</button>
         </div>
       </div>
-      <div><img src={bannerStack} alt="Stacked layers of development technologies" /></div>
+      <div>
+        <img
+          src={bannerStack}
+          alt="Stacked layers of development technologies"
+        />
+      </div>
     </section>
   );
 }
