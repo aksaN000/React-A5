@@ -2,3 +2,19 @@
    @plugin "daisyui" {
      themes: light --default;
    }
+
+  /* Brand gradient: change it here and the whole site follows. can be used to change the theme of site  */
+:root {
+  --brand-gradient: linear-gradient(90deg, #f97316, #ec4899, #8b5cf6);
+}
+
+@utility bg-brand {
+  background-image: var(--brand-gradient);
+}
+
+@utility text-brand {
+  background-image: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

@@ -7,7 +7,7 @@ function App() {
     <>
       <Navbar></Navbar>
       <Banner></Banner>
-      //technologies + stack panel
+      {/* technologies + stack panel */}
       <Footer></Footer>
     </>
   )
