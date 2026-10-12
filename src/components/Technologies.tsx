@@ -17,8 +17,9 @@ const technologiesPromise = loadTechnologies();
 // The grid: gets the list, makes one TechCard per technology
 type TechGridProps = {
   onAdd: (tech: Technology) => void;
+  stack: Technology[]; // the current stack, so we can disable the "Add" button for technologies already in the stack
 };
-function TechGrid({ onAdd }: TechGridProps) {
+function TechGrid({ onAdd, stack }: TechGridProps) {
   const technologies = use(technologiesPromise);
 
   return (
@@ -30,6 +31,7 @@ function TechGrid({ onAdd }: TechGridProps) {
           <TechCard
             key={tech.id}
             prop_onAdd={onAdd}
+            prop_added={stack.some((t) => t.id === tech.id)}
             prop_tech={tech}
           ></TechCard> //key is a name tag on each card, so React can tell the cards apart when the list changes.
         ),
@@ -64,13 +66,15 @@ const Technologies = () => {
             </div>
           }
         >
-          <TechGrid onAdd={addToStack} />
+          <TechGrid onAdd={addToStack} stack={stack} />
         </Suspense>
 
         <aside className="w-full lg:w-72 lg:sticky lg:top-24 bg-white border border-gray-300 rounded-xl p-5">
           <h3 className="font-semibold text-gray-900">Your Stack</h3>
           <p className="mt-1 text-xs text-gray-400">
-            No technologies selected yet.
+            {stack.length === 0
+              ? "No technologies selected yet."
+              : `${stack.length} ${stack.length === 1 ? "Technology" : "Technologies"} Selected`}
           </p>
           {stack.length === 0 ? (
             <div className="mt-4 border border-dashed border-gray-200 rounded-lg py-8 text-center text-sm text-gray-400">
