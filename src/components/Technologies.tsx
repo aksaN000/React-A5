@@ -45,6 +45,12 @@ const Technologies = () => {
     if (stack.some((t) => t.id === tech.id)) return; // already in the stack
     setStack([...stack, tech]);
   }
+  function removeFromStack(id: string) {
+    setStack(stack.filter((t) => t.id !== id)); // keep every item whose id is NOT this one
+  }
+  function clearStack() {
+    setStack([]);
+  }
   return (
     <section
       id="technologies"
@@ -98,9 +104,24 @@ const Technologies = () => {
                     </p>
                     <p className="text-xs text-gray-500">{tech.category}</p>
                   </div>
+                  <button
+                    onClick={() => removeFromStack(tech.id)}
+                    aria-label={`Remove ${tech.name}`}
+                    className="ml-auto text-gray-400 hover:text-red-500 cursor-pointer px-2"
+                  >
+                    ✕
+                  </button>
                 </li>
               ))}
             </ul>
+          )}
+          {stack.length > 0 && (
+            <button
+              onClick={clearStack}
+              className="mt-4 w-full text-sm font-medium py-2 rounded-lg border border-gray-300 text-gray-700 cursor-pointer hover:bg-gray-50"
+            >
+              Remove all
+            </button>
           )}
         </aside>
       </div>
