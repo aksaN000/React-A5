@@ -1,7 +1,7 @@
 import { Suspense, use, useState } from "react";
 import type { Technology } from "../types";
 import TechCard from "./TechCard";
-
+import { toast } from "react-toastify";
 // const technologiesPromise: Promise<Technology[]> = fetch(
 //   "/Technologies.json",
 // ).then((res) => res.json());
@@ -42,14 +42,21 @@ function TechGrid({ onAdd, stack }: TechGridProps) {
 const Technologies = () => {
   const [stack, setStack] = useState<Technology[]>([]);
   function addToStack(tech: Technology) {
-    if (stack.some((t) => t.id === tech.id)) return; // already in the stack
+    if (stack.some((t) => t.id === tech.id)) {
+      toast.warning(`${tech.name} is already in your stack`);
+      return;
+    }
     setStack([...stack, tech]);
+    toast.success(`${tech.name} added to your stack`);
   }
   function removeFromStack(id: string) {
-    setStack(stack.filter((t) => t.id !== id)); // keep every item whose id is NOT this one
+    const removed = stack.find((t) => t.id === id);
+    setStack(stack.filter((t) => t.id !== id));
+    toast.info(`${removed?.name} removed from your stack`);
   }
   function clearStack() {
     setStack([]);
+    toast.info("Your stack is cleared");
   }
   return (
     <section
