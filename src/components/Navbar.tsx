@@ -29,7 +29,7 @@ function Navbar() {
           <a href="#" className="text-pink-600 font-medium">
             Home
           </a>
-          <a href="#" className="hover:text-pink-600">
+          <a href="#technologies" className="hover:text-pink-600">
             Technologies
           </a>
           <a href="#" className="hover:text-pink-600">
